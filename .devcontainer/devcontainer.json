@@ -8,6 +8,7 @@
 		"vscode": {
 			"extensions": [
 				"shardulm94.trailing-spaces",
+				"streetsidesoftware.code-spell-checker",
 				"mhutchie.git-graph"
 			]
 		}
