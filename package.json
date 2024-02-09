@@ -7,8 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "sidera", "visx", "react", "d3"
+    "sidera",
+    "visx",
+    "react",
+    "d3"
   ],
   "author": "@Hoshino-HER",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
 }
