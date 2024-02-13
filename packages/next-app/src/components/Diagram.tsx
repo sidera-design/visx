@@ -24,12 +24,12 @@ const data = [
   createData('24:00'),
 ];
 
-export default function Chart() {
+export default function Diagram() {
   const theme = useTheme();
 
   return (
     <React.Fragment>
-      <Title>Today</Title>
+      <Title>TimingDiagram</Title>
       <div style={{ width: '100%', flexGrow: 1, overflow: 'hidden' }}>
         Chart
         {/* <LineChart
