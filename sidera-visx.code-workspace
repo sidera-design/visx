@@ -12,7 +12,8 @@
 			"roboto",
 			"sidera",
 			"tailwindcss",
-			"visx"
+			"visx",
+			"xychart"
 		],
 		"[javascript]": {
 			"editor.tabSize": 2
