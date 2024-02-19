@@ -6,12 +6,14 @@
 	],
 	"settings": {
 		"cSpell.words": [
+			"codepaths",
 			"devcontainer",
 			"devcontainers",
 			"fontsource",
 			"roboto",
 			"sidera",
 			"tailwindcss",
+			"tsbuildinfo",
 			"visx",
 			"xychart"
 		],

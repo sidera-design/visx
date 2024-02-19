@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   AnimatedAxis,
   AnimatedGrid,
@@ -27,14 +28,15 @@ const data2 = [
 ];
 
 const accessors = {
-  xAccessor: (d) => d.x,
-  yAccessor: (d) => d.y
+  xAccessor: (d: { x: string }) => d.x,
+  yAccessor: (d: { y: number }) => d.y
 };
 // ==============
 
 
-export default function TimingDiagram<Datum extends object>(
-  props: TimingDiagramProps<Datum>){
+export default function TimingDiagram(
+  props: TimingDiagramProps<{x: string, y: number}>
+): React.JSX.Element {
   return (
     <XYChart height={300} xScale={{ type: "band" }} yScale={{ type: "linear" }}>
       <AnimatedAxis orientation="bottom" />
