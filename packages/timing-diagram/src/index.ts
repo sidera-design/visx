@@ -1,1 +1,3 @@
-export { default as TimingDiagram } from './TimingDiagram';
+import TimingDiagram from "./TimingDiagram";
+
+export default TimingDiagram

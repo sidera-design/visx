@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "pwd && tsc",
+    "clean": "rm -rf lib tsconfig.tsbuildinfo"
   },
   "keywords": [],
   "author": "",
