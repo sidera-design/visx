@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import { ParentSize } from "@visx/responsive";
 import { Text } from '@visx/text';
+import { Group } from '@visx/group';
 // import { LineChart, axisClasses } from '@mui/x-charts';
 // import { ChartsTextStyle } from '@mui/x-charts/ChartsText';
-import Title from './Title';
 import TimingDiagram from '@sidera/timing-diagram/src';
-import Box from '@mui/material/Box';
+
 
 
 // ==============
@@ -26,25 +26,30 @@ const accessors = {
 // ==============
 
 export default function Diagram(
-  { width, height }: { width: number, height: number }
+  { width = 400, height = 400 }: { width?: number, height?: number }
 ) {
   const theme = useTheme();
 
   return (
-    <React.Fragment>
-      <svg width={width} height={height}>
-        <Text
-          verticalAnchor="start">{
-          "width: " + width.toFixed(1) + ", "
-          + "height: " + height.toFixed(1)
-        }</Text>
+    <ParentSize>
+      {({ width, height }) => (
+        <Group>
+          <Text
+            verticalAnchor="start"
+            height={20}
+          >
+              {
+                "width: " + width.toFixed(1) + ", "
+                + "height: " + height.toFixed(1)
+              }
+          </Text>
           <TimingDiagram
-            width={width}
-            height={height}
-            data={data}
-            accessors={accessors}
+              width={width}
+              data={data}
+              accessors={accessors}
           />
-      </svg>
-    </React.Fragment>
+        </Group>
+      )}
+    </ParentSize>
   );
 }

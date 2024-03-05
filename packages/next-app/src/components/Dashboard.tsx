@@ -7,52 +7,89 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Diagram from './Diagram';
-import { ParentSize } from '@visx/responsive';
+import Button from '@mui/material/Button';
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme(
+  {
+    palette: {
+      mode: "light",
+    }
+  }
+);
 
 export default function Dashboard() {
+  const theme = {...defaultTheme,
+    palette: {
+      ...defaultTheme.palette,
+      text: {
+        primary: "rgba(255, 255, 255, 0.87)",
+        secondary: "rgba(255, 255, 255, 0.54)",
+      },
+    }
+  };
 
   return (
-    <ParentSize>
-    {(parent) => (
-      <ThemeProvider theme={defaultTheme}>
-        <Box sx={{ display: 'flex' }}>
-          <CssBaseline />
-          <AppBar>
-            <Toolbar
-              sx={{
-                pr: '24px', // keep right padding when drawer closed
-              }}
-            >
-              <Typography
-                component="h1"
-                variant="h6"
-                color="inherit"
-                noWrap
-                sx={{ flexGrow: 1 }}
-              >
-                Demo
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <Box
-            component="main"
-            sx={{
-              backgroundColor: (theme) =>
-                theme.palette.mode === 'light'
-                  ? theme.palette.grey[100]
-                  : theme.palette.grey[900],
-              flexGrow: 1
-            }}
+    <ThemeProvider theme={theme}>
+      <Box
+        display='flex'
+        flexDirection='column'
+      >
+        <CssBaseline />
+        <AppBar
+          position="sticky"
+        >
+          <Toolbar
+            sx={{ pr: '12px' }}
           >
-            <Box sx={{ height: 50 }} />
-            <Typography sx={{ color: 'red' }}>h1. ANBCDE</Typography>
-            <Diagram width={parent.width} height={500}/>
+            <Typography
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+              sx={{ flexGrow: 1 }}
+            >
+              Demo - Dummy Diagram
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Box
+          component="main"
+          sx={{
+            backgroundColor: (theme) =>
+              theme.palette.mode === 'light'
+                ? theme.palette.grey[100]
+                : theme.palette.grey[900],
+          }}
+          flexGrow={1}
+        >
+          <Box className="diagram-title"
+            display="flex"
+            flexDirection="column"
+            justifyContent="flex-end"
+            border={1}
+            borderColor={"primary.main"}
+            margin={1}
+          >
+            <Typography
+              variant="body1"
+              color="primary"
+              marginLeft={1}
+              noWrap
+            >
+              Dummy Story
+            </Typography>
+          </Box>
+          <Box
+            // display="abstract"
+            // height="100%"
+            overflow="auto"
+            flexGrow={1}
+            color="text.primary"
+          >
+            <Diagram />
           </Box>
         </Box>
-      </ThemeProvider>
-    )}
-    </ParentSize>
+      </Box>
+    </ThemeProvider>
   );
 }
