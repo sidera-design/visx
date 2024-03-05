@@ -16,6 +16,8 @@ import { curveStepBefore } from '@visx/curve';
 // >;
 
 type TimingDiagramProps = {
+  y?: number,
+  x?: number,
   width: number,
   height: number,
   data: { device: string, x: string, y: number }[],
@@ -26,7 +28,7 @@ type TimingDiagramProps = {
 }
 
 export default function TimingDiagram(
-  { width, height, data, accessors }: TimingDiagramProps
+  { x, y, width, height, data, accessors }: TimingDiagramProps
 ) {
   const data1 = data.filter(d => d.device === "A");
   const data2 = data.filter(d => d.device === "B");
