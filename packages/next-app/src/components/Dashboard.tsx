@@ -60,6 +60,8 @@ export default function Dashboard() {
                 ? theme.palette.grey[100]
                 : theme.palette.grey[900],
           }}
+          display="flex"
+          flexDirection="column"
           flexGrow={1}
         >
           <Box className="diagram-title"
@@ -81,10 +83,12 @@ export default function Dashboard() {
           </Box>
           <Box
             // display="abstract"
-            // height="100%"
             overflow="auto"
             flexGrow={1}
             color="text.primary"
+            border={1}
+            borderColor={"primary.main"}
+            margin={"1px"}
           >
             <Diagram />
           </Box>

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import { ParentSize } from "@visx/responsive";
 import { Text } from '@visx/text';
 import { Group } from '@visx/group';
@@ -8,47 +7,65 @@ import { Group } from '@visx/group';
 import TimingDiagram from '@sidera/timing-diagram/src';
 
 
-
 // ==============
 const data = [
-  { device: "A", x: "2020-01-01", y: 50 },
-  { device: "A", x: "2020-01-02", y: 10 },
-  { device: "A", x: "2020-01-03", y: 20 },
-  { device: "B", x: "2020-01-01", y: 30 },
-  { device: "B", x: "2020-01-02", y: 40 },
-  { device: "B", x: "2020-01-03", y: 80 }
+  { device: "A", x: 0, y: false },
+  { device: "B", x: 0, y: false },
+  { device: "A", x: 100, y: true },
+  { device: "B", x: 200, y: true },
+  { device: "A", x: 300, y: false },
+  { device: "B", x: 400, y: false },
+  { device: "A", x: 600, y: false },
+  { device: "B", x: 600, y: false },
 ];
 
 const accessors = {
-  xAccessor: (d: { x: string }) => d.x,
-  yAccessor: (d: { y: number }) => d.y
+  xAccessor: (d: { x: number }) => d.x,
+  yAccessor: (d: { y: boolean }) => d.y ? "ON" : "OFF"
 };
 // ==============
 
-export default function Diagram(
-  { width = 400, height = 400 }: { width?: number, height?: number }
-) {
-  const theme = useTheme();
+const diagramHeight = 100;
+const axisHeight = 20;
+const padding = 10;
+const titleHeight = 20;
+const devices = ["A", "B"];
+const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+
+export default function Diagram(){
+  const outerHeight = (diagramHeight + padding) * devices.length - padding + axisHeight + margin.top + margin.bottom;
 
   return (
     <ParentSize>
       {({ width, height }) => (
+        <svg
+          width={width}
+          height={outerHeight}
+        >
         <Group>
           <Text
             verticalAnchor="start"
-            height={20}
+            height={titleHeight}
+            x={0} y={0}
           >
               {
                 "width: " + width.toFixed(1) + ", "
                 + "height: " + height.toFixed(1)
               }
           </Text>
-          <TimingDiagram
-              width={width}
-              data={data}
-              accessors={accessors}
-          />
+          {devices.map((device, i) => (
+            <TimingDiagram
+                y={titleHeight + (diagramHeight + padding) * i}
+                key={`diagram-${i}`}
+                height={diagramHeight}
+                width={width}
+                data={data}
+                device={device}
+                accessors={accessors}
+            />
+          ))}
         </Group>
+        </svg>
       )}
     </ParentSize>
   );
