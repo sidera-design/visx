@@ -1,0 +1,12 @@
+{
+  "name": "@sidera/mock-data",
+  "version": "0.1.0",
+  "description": "Mock data for Sidera development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
