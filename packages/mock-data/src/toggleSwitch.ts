@@ -1,8 +1,10 @@
 // Simple scenario data of toggle switch and lamp.
 
-export type SwitchState = "on" | "off";
+export const switchState = ["on", "off"] as const;
+export type SwitchState = typeof switchState[number];
 export type WaitTime = number | "any";
-export type LampState = "on" | "off";
+export const lampState = ["on", "off"] as const;
+export type LampState = typeof lampState[number];
 
 export type SceneAction<T = boolean> = {
   name?: string;
